@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gender Equality</title>
+  <style>
+    /* Elegant color palette */
+    :root {
+      --deep-navy: #1a1f36;
+      --gold: #bfa14a;
+      --light-gray: #f9f8f6;
+      --dark-gray: #444444;
+      --border-gray: #d1cfc9;
+    }
+
+    body {
+      font-family: "Merriweather", serif;
+      background-color: var(--light-gray);
+      color: var(--deep-navy);
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    /* Header with logo, text, and sign-in button aligned */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--deep-navy);
+      color: var(--gold);
+      padding: 1.5rem 2rem;
+      border-bottom: 3px solid var(--gold);
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    header .left-section {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-grow: 1;
+      min-width: 250px;
+    }
+
+    header img.logo {
+      height: 100px;
+      width: auto;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    header .header-text {
+      text-align: center;
+      flex-grow: 1;
+      min-width: 250px;
+    }
+
+    header h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 3.5rem;
+      letter-spacing: 4px;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    header p {
+      margin: 0.3rem 0 0 0;
+      font-style: italic;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--gold);
+      text-shadow: 0 0 2px rgba(191, 161, 74, 0.8);
+    }
+
+    /* Sign in/out button */
+    #signin-btn {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-family: "Merriweather", serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    #signin-btn:hover {
+      background-color: var(--gold);
+      color: var(--deep-navy);
+    }
+
+    #signin-btn svg {
+      fill: currentColor;
+      width: 20px;
+      height: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto 3rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 2.5fr 1fr;
+      gap: 3rem;
+    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Get Involved - Gender Equality</title>
+  <style>
+    :root {
+      --deep-navy: #1a1f36;
+      --gold: #bfa14a;
+      --light-gray: #f9f8f6;
+      --dark-gray: #444444;
+      --border-gray: #d1cfc9;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Merriweather", serif;
+      background-color: var(--light-gray);
+      color: var(--deep-navy);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 3rem 3.5rem;
+      border-radius: 15px;
+      box-shadow: 0 12px 30px rgba(26, 31, 54, 0.15);
+      max-width: 480px;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: var(--deep-navy);
+      letter-spacing: 2px;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      color: var(--dark-gray);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: var(--deep-navy);
+      text-align: left;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      border: 2px solid var(--border-gray);
+      border-radius: 10px;
+      font-family: "Merriweather", serif;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      outline: none;
+      box-shadow: 0 0 8px rgba(191, 161, 74, 0.6);
+    }
+
+    textarea {
+      min-height: 120px;
+    }
+
+    button[type="submit"] {
+      background-color: var(--gold);
+      color: var(--deep-navy);
+      border: none;
+      padding: 1rem 0;
+      font-size: 1.3rem;
+      font-family: "Merriweather", serif;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(191, 161, 74, 0.8);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    button[type="submit"]:hover {
+      background-color: var(--deep-navy);
+      color: var(--gold);
+      box-shadow: 0 8px 24px rgba(191, 161, 74, 1);
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 2rem 2rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="form-container" role="main" aria-labelledby="form-title">
+    <h1 id="form-title">Get Involved</h1>
+    <p class="subtitle">Fill out the form below to join the movement and share your thoughts.</p>
+    <form id="involve-form" novalidate>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required aria-required="true" />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required aria-required="true" />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required aria-required="true"></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('involve-form');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      alert('Thank you for getting involved! We have received your message.');
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>

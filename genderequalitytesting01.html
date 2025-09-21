@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gender Equality</title>
+  <style>
+    /* Elegant color palette */
+    :root {
+      --deep-navy: #1a1f36;
+      --gold: #bfa14a;
+      --light-gray: #f9f8f6;
+      --dark-gray: #444444;
+      --border-gray: #d1cfc9;
+    }
+
+    body {
+      font-family: "Merriweather", serif;
+      background-color: var(--light-gray);
+      color: var(--deep-navy);
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    /* Header with logo, text, and sign-in button aligned */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--deep-navy);
+      color: var(--gold);
+      padding: 1.5rem 2rem;
+      border-bottom: 3px solid var(--gold);
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    header .left-section {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-grow: 1;
+      min-width: 250px;
+    }
+
+    header img.logo {
+      height: 100px;
+      width: auto;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    header .header-text {
+      text-align: center;
+      flex-grow: 1;
+      min-width: 250px;
+    }
+
+    header h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 3.5rem;
+      letter-spacing: 4px;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    header p {
+      margin: 0.3rem 0 0 0;
+      font-style: italic;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--gold);
+      text-shadow: 0 0 2px rgba(191, 161, 74, 0.8);
+    }
+
+    /* Sign in/out button */
+    #signin-btn {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-family: "Merriweather", serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    #signin-btn:hover {
+      background-color: var(--gold);
+      color: var(--deep-navy);
+    }
+
+    #signin-btn svg {
+      fill: currentColor;
+      width: 20px;
+      height: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto 3rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 2.5fr 1fr;
+      gap: 3rem;
+    }
+
+    main article {
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border: 1px solid var(--border-gray);
+      box-shadow: 0 8px 20px rgba(26, 31, 54, 0.1);
+      border-radius: 12px;
+      margin-bottom: 3rem;
+      transition: box-shadow 0.3s ease;
+    }
+
+    main article:hover {
+      box-shadow: 0 12px 30px rgba(26, 31, 54, 0.2);
+    }
+
+    article h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.5rem;
+      margin-top: 0;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 0.3rem;
+      color: var(--deep-navy);
+    }
+
+    article p {
+      color: var(--dark-gray);
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    article p em {
+      color: var(--deep-navy);
+      font-weight: 600;
+    }
+
+    article strong {
+      color: var(--deep-navy);
+      font-weight: 700;
+    }
+
+    article img {
+      width: 100%;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      border: 1px solid var(--border-gray);
+      box-shadow: 0 4px 12px rgba(26, 31, 54, 0.1);
+      object-fit: cover;
+      max-height: 400px;
+    }
+
+    aside {
+      background: #fff;
+      padding: 2rem 2rem;
+      border: 1px solid var(--border-gray);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(26, 31, 54, 0.05);
+      color: var(--deep-navy);
+      font-size: 1.1rem;
+    }
+
+    aside h3 {
+      margin-top: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+      color: var(--deep-navy);
+    }
+
+    aside ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 2rem;
+    }
+
+    aside ul li {
+      margin-bottom: 0.8rem;
+      padding-left: 1.2rem;
+      position: relative;
+      color: var(--dark-gray);
+      font-weight: 600;
+    }
+
+    aside ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 1.3rem;
+      line-height: 1;
+      top: 0.1rem;
+    }
+
+    aside p {
+      font-style: italic;
+      color: var(--dark-gray);
+      margin-bottom: 1.5rem;
+    }
+
+    aside img {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border-gray);
+      box-shadow: 0 4px 12px rgba(26, 31, 54, 0.1);
+      object-fit: cover;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      border-top: 3px solid var(--gold);
+      margin-top: 3rem;
+      font-size: 1rem;
+      font-family: "Merriweather", serif;
+      color: var(--deep-navy);
+      background-color: var(--light-gray);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+
+      header {
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      header .header-text {
+        min-width: auto;
+      }
+
+      header h1 {
+        font-size: 2.8rem;
+      }
+
+      article h2 {
+        font-size: 2rem;
+      }
+
+      aside h3 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+  <!-- Google Fonts for elegant serif and sans-serif -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="left-section">
+      <img src="masarap.png" alt="Logo" class="logo" />
+      <div class="header-text">
+        <h1>GENDER EQUALITY</h1>
+        <p>“All Genders should be treated Equally”</p>
+      </div>
+    </div>
+    <button id="signin-btn" aria-label="Sign In">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+      </svg>
+      <span id="signin-text">Sign In</span>
+    </button>
+  </header>
+
+  <div class="container">
+    <!-- Main content -->
+    <main>
+      <article>
+        <h2>INTRODUCTION</h2>
+        <p><em>By Roran Miles T. Guden | Sept 22, 2025</em></p>
+        <img src="c:\Users\Cashley\Downloads\Equal Pay Day - April 12th.jpeg" alt="Garden Opening Photo" width="500" height="400" />
+        <p>
+          Gender equality has not been fully established and remains an ongoing global goal, though
+          significant progress has been made through milestones like the Universal Declaration of Human
+          Rights (1948), the adoption of the Convention on the Elimination of All Forms of Discrimination
+          against Women (CEDAW)(1979), and the Beijing Platform for Action (1995). These efforts
+          recognized inherent equality and established legal frameworks and strategies to address
+          discrimination and promote women's rights at both national and international levels.
+        </p>
+
+        <p>
+          <strong>1948: Universal Declaration of Human Rights:</strong> This document established the foundational
+          principle that all human beings are born free and equal in dignity and rights, including "without
+          distinction of any kind, such as... sex".
+        </p>
+
+        <p>
+          <strong>1970s: International Feminist Movement and UN Initiatives:</strong> 
+          The momentum of the international feminist movement led the UN to declare 1975 the
+          International Women's Year and to designate 1976-1985 as the UN Decade for Women.
+        </p>
+
+        <p>
+          <strong>1979: Convention on the Elimination of All Forms of Discrimination against Women
+          (CEDAW):</strong> Adopted by the UN General Assembly, CEDAW defines discrimination against women
+          and creates an agenda for national action to eliminate it.
+        </p>
+
+        <p>
+          <strong>1985: Nairobi World Conference on Women:</strong> The concept of gender mainstreaming – an
+          approach that incorporates both women's and men's interests into policy-making – was first
+          discussed at this conference.
+        </p>
+
+        <p>
+          <strong>1995: Beijing Platform for Action:</strong> This crucial document, adopted at the Fourth UN World
+          Conference on Women, established gender mainstreaming as a strategy in international gender
+          equality policy.
+        </p>
+
+        <h2>What does Gender Equality mean?</h2>
+        <p>
+          <strong>Gender Equality</strong> is the principle that every person, regardless of gender, must have the same rights,
+          responsibilities, and opportunities in life. It means that women, men, and individuals of diverse
+          gender identities should be treated fairly and equally in areas such as education, employment,
+          politics, health, and family life. Gender equality is not about making men and women exactly the
+          same, but about ensuring that their differences do not result in unequal treatment or discrimination.
+          It emphasizes that a person’s skills, talents, and contributions should be valued based on their
+          abilities, not on whether they are male, female, or belong to another gender group. This also means
+          that women, men, and people of all genders have the same rights, responsibilities, and
+          opportunities in every aspect of life — whether in education, work, politics, or family.
+          In short, gender equality means fairness, equal opportunities, and respect for all genders, so that
+          everyone can reach their full potential without being held back by stereotypes or discrimination.
+        </p>
+
+        <img src="https://placekitten.com/900/300" alt="Close-up of Flowers" />
+        <p>
+          Local artists also displayed nature-inspired paintings, making the opening
+          a true community celebration.
+        </p>
+        <img src="https://placekitten.com/800/350" alt="People walking in the garden" />
+      </article>
+
+      <article>
+        <h2>Local Market Sees Record Visitors</h2>
+        <p><em>By John Smith | Sept 21, 2025</em></p>
+        <img src="https://placekitten.com/900/450" alt="Crowded Market Scene" />
+        <p>
+          The weekend market hit record attendance as vendors showcased handmade
+          crafts, organic produce, and live music performances.
+        </p>
+        <img src="https://placekitten.com/850/300" alt="Fresh Produce Display" />
+        <p>
+          Visitors enjoyed gourmet snacks while children delighted in face-painting
+          and street performers.
+        </p>
+      </article>
+
+      <article>
+        <h2>Community Theater Premieres New Play</h2>
+        <p><em>By Alice Brown | Sept 21, 2025</em></p>
+        <img src="https://placekitten.com/850/400" alt="Stage Scene" />
+        <p>
+          The local theater group debuted an original play to a sold-out audience.
+          Critics praised the cast’s emotional performances and the creative set design.
+        </p>
+        <img src="https://placekitten.com/850/350" alt="Actors taking a bow" />
+      </article>
+    </main>
+
+    <!-- Sidebar -->
+    <aside>
+      <h3>Top Stories</h3>
+      <ul>
+        <li>Sports: Tigers win championship</li>
+        <li>Weather: Sunny skies all week</li>
+        <li>Travel: Top 5 destinations this fall</li>
+        <li>Tech: New smartphone release draws crowds</li>
+      </ul>
+
+      <h3>Quick Facts</h3>
+      <p>Did you know? The world’s oldest newspaper is from 1605!</p>
+
+      <img src="https://placekitten.com/400/250" alt="Vintage Newspaper Image" />
+    </aside>
+  </div>
+
+  <!-- Call to Action Section -->
+  <section id="call-to-action" style="
+    background-color: var(--deep-navy);
+    color: var(--gold);
+    text-align: center;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    box-shadow: 0 8px 20px rgba(26, 31, 54, 0.15);
+  ">
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 1rem;">
+      Join the Movement for Gender Equality
+    </h2>
+    <p style="font-size: 1.3rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+      Your voice matters. Stand with us to promote fairness, respect, and equal opportunities for all genders worldwide.
+    </p>
+    <button id="cta-button" style="
+      background-color: var(--gold);
+      color: var(--deep-navy);
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(191, 161, 74, 0.6);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    ">
+      Get Involved
+    </button>
+  </section>
+
+  </footer>
+
+  <footer>
+    &copy; 2025 The Daily Chronicle – All rights reserved.
+  </footer>
+
+  <script>
+    const signinBtn = document.getElementById('signin-btn');
+    const signinText = document.getElementById('signin-text');
+
+    let signedIn = false;
+
+    signinBtn.addEventListener('click', () => {
+      signedIn = !signedIn;
+      if (signedIn) {
+        signinText.textContent = 'Sign Out';
+        signinBtn.setAttribute('aria-label', 'Sign Out');
+      } else {
+        signinText.textContent = 'Sign In';
+        signinBtn.setAttribute('aria-label', 'Sign In');
+      }
+    });
+  </script>
+</body>
+</html>
