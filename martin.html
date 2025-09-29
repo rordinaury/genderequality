@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Without Limits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --accent: #45b7d1;
+            --purple: #9b5de5;
+            --yellow: #fee440;
+            --pink: #f15bb5;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--purple), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-slogan {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .primary {
+            background: linear-gradient(45deg, var(--primary), var(--purple));
+            color: white;
+        }
+
+        .primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(155, 93, 229, 0.3);
+        }
+
+        .secondary {
+            background: transparent;
+            color: var(--purple);
+            border: 2px solid var(--purple);
+        }
+
+        .secondary:hover {
+            background: var(--purple);
+            color: white;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://placeholder-image-service.onrender.com/image/1200x800?prompt=Colorful%20abstract%20background%20with%20gradient%20colors%20and%20floating%20shapes&id=hero-bg') no-repeat center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        /* Objectives Section */
+        .objectives-section {
+            background: white;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .objective-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .objective-card:hover::before {
+            left: 100%;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--primary), var(--purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .objective-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .objective-card p {
+            color: #555;
+        }
+
+        /* Statistics Section */
+        .statistics-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: rotate(2deg) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--yellow);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Student Thoughts Section */
+        .students-section {
+            background: white;
+        }
+
+        .student-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .student-tab {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .student-tab:hover, .student-tab.active {
+            background: linear-gradient(45deg, var(--primary), var(--purple));
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .student-quotes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .student-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .student-card.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .student-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary);
+        }
+
+        .student-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .student-details h3 {
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .student-details p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .student-quote {
+            font-style: italic;
+            color: #555;
+            border-left: 3px solid var(--secondary);
+            padding-left: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-input {
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            min-width: 300px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-slogan {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .objectives-grid,
+            .stats-container,
+            .student-quotes {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-input {
+                min-width: auto;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap" style="color: #9b5de5; font-size: 2rem;"></i>
+                <h1>Future Without Limits</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#objectives">Objectives</a></li>
+                <li><a href="#statistics">Statistics</a></li>
+                <li><a href="#students">Student Voices</a></li>
+                <li><a href="#cta">Take Action</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Header Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Future Without Limits</h1>
+            <p class="hero-slogan">"Dream big. Break barriers. Choose your future."</p>
+            <div class="hero-buttons">
+                <button class="cta-btn primary">Join the Movement</button>
+                <button class="cta-btn secondary">Learn More</button>
+            </div>
+        </div>
+        <div class="hero-bg"></div>
+    </section>
+
+    <!-- Objectives Section -->
+    <section id="objectives" class="section objectives-section">
+        <div class="section-container">
+            <h2 class="section-title">🎯 Objectives</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="card-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Inspire Dreams</h3>
+                    <p>To inspire students to dream of careers without gender restrictions.</p>
+                </div>
+                <div class="objective-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Raise Awareness</h3>
+                    <p>To raise awareness about how gender stereotypes affect career choices.</p>
+                </div>
+                <div class="objective-card">
+                    <div class="card-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Provide Resources</h3>
+                    <p>To provide students with role models and resources for pursuing non-traditional careers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="statistics" class="section statistics-section">
+        <div class="section-container">
+            <h2 class="section-title">📊 Supporting Statistics</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">35%</div>
+                    <p>Only 35% of STEM students in higher education worldwide are women (UNESCO, 2022).</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Nursing & Teaching</div>
+                    <p>Female-dominated in the Philippines, while engineering and IT are male-dominated (PSA, 2021).</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$12 Trillion</div>
+                    <p>Closing gender gaps could boost the global economy annually (WEF, 2023).</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">70%</div>
+                    <p>Of young people still believe in career stereotypes (Plan International, 2020).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Thoughts Section -->
+    <section id="students" class="section students-section">
+        <div class="section-container">
+            <h2 class="section-title">🎓 Student Voices</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Click on each category to see what students are saying about gender stereotypes in career choices</p>
+            
+            <div class="student-tabs">
+                <button class="student-tab active" data-category="stem">STEM Fields</button>
+                <button class="student-tab" data-category="arts">Arts & Humanities</button>
+                <button class="student-tab" data-category="career">Career Choice Pressures</button>
+                <button class="student-tab" data-category="solutions">Solutions & Hope</button>
+            </div>
+            
+            <div class="student-quotes">
+                <!-- STEM Fields -->
+                <div class="student-card active" data-category="stem">
+                    <div class="student-info">
+                        <div class="student-avatar">
+                            <img src="https://placeholder-image-service.onrender.com/image/100x100?prompt=Female%20student%20with%20glasses%20and%20scientific%20expression&id=student1" alt="Female student with glasses and scientific expression">
+                        </div>
+                        <div class="student-details">
+                            <h3>Maria Santos</h3>
+                            <p>Computer Science Student</p>
+                        </div>
+                    </div>
+                    <p class="student-quote">"I was the only girl in my advanced programming class. Teachers would often assume the boys were more technically skilled. We need to change this narrative - talent has no gender!"</p>
+                </div>
+                
+                <div class="student-card active" data-category="stem">
+                    <div class="student-info">
+                        <div class="student-avatar">
+                            <img src="https://placeholder-image-service.onrender.com/image/100x100?prompt=Male%20student%20with%20friendly%20smile%20wearing%20lab%20coat&id=student2" alt="Male student with friendly smile wearing lab coat">
+                        </div>
+                        <div class="student-details">
+                            <h3>James Rodriguez</h3>
+                            <p>Nursing Student</p>
+                        </div>
+                    </div>
+                    <p class="student-quote">"People are surprised when I tell them I'm studying nursing. They say 'but that's a woman's job.' Caring for others shouldn't be limited by gender stereotypes."</p>
+                </div>
+                
+                <!-- Arts & Humanities -->
+                <div class="student-card" data-category="arts">
+                    <div class="student-info">
+                        <div class="student-avatar">
+                            <img src="https://placeholder-image-service.onrender.com/image/100x100?prompt=Creative%20female%20student%20with%20colorful%20hair&id=student3" alt="Creative female student with colorful hair">
+                        </div>
+                        <div class="student-details">
+                            <h3>Sophia Chen</h3>
+                            <p>Fine Arts Major</p>
+                        </div>
+                    </div>
+                    <p class="student-quote">"My parents wanted me to become an engineer because 'artists don't make money.' But passion shouldn't be measured by salary expectations or gender norms."</p>
+                </div>
+                
+                <div class="student-card" data-category="arts">
+                    <div class="student-info">
+                        <div class="student-avatar">
+                            <img src="https://placeholder-image-service.onrender.com/image/100x100?prompt=Male%20student%20with%20thoughtful%20expression%20and%20book&id=student4" alt="Male student with thoughtful expression and book">
+                        </div>
+                        <div class="student-details">
+                            <h3>Miguel Torres</h3>
+                            <p>Literature Student</p>
+                        </div>
+                    </div>
+                    <p class="student-quote">"I've been told that 'real men' don't study literature. But expressing emotions and understanding human experience through words is valuable regardless of gender."</p>
+                </div>
+                
+                <!-- Career Choice Pressures -->
+                <div class="student-card" data-category="career">
+                    <div class="student-info">
+                        <div class="student-avatar">
+                            <img src="https://placeholder-image-service.onrender.com/image/100x100?prompt=Female%20student%20with%20determined%20expression&id=student5" alt="Female student with determined expression">
+                        </div>
+                        <div class="student-details">
+                            <h3>Andrea Lopez</h3>
+                            <p>Engineering Student</p>
+                        </div>
+                    </div>
+                    <p class="student-quote">"My family supported my brother's engineering dreams but questioned mine. They worried it would be 'too stressful' for a woman. We need to support all dreams equally."</p>
+                </div>
+                
+                <!-- Solutions & Hope -->
+                <div class="student-card" data-category="solutions">
+                    <div class="student-info">
+                        <div class="student-avatar">
+                            <img src="https://placeholder-image-service.onrender.com/image/100x100?prompt=Student%20leader%20with%20positive%20expression&id=student6" alt="Student leader with positive expression">
+                        </div>
+                        <div class="student-details">
+                            <h3>David Kim</h3>
+                            <p>Student Activist</p>
+                        </div>
+                    </div>
+                    <p class="student-quote">"We're creating mentorship programs that connect students with professionals in non-traditional fields. Seeing someone like you succeeding breaks down mental barriers."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="cta" class="cta-section">
+        <div class="section-container">
+            <div class="cta-content">
+                <h2 class="cta-title">Join the Movement for Change</h2>
+                <p class="cta-text">Be part of the generation that breaks down gender barriers in career choices. Together we can create a future where everyone can pursue their passions without limitations.</p>
+                
+                <div class="cta-form">
+                    <input type="email" class="cta-input" placeholder="Your email address">
+                    <button class="cta-btn primary">Get Involved</button>
+                </div>
+                
+                <div class="hero-buttons" style="margin-top: 2rem;">
+                    <button class="cta-btn secondary">Share Your Story</button>
+                    <button class="cta-btn primary">Volunteer</button>
+                    <button class="cta-btn secondary">Download Resources</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2023 Future Without Limits Campaign. Empowering dreams for all.</p>
+    </footer>
+
+    <script>
+        // Simple animation for elements when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 1s ease-out forwards';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe all section elements
+            document.querySelectorAll('.objective-card, .stat-item, .student-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Add click event to buttons
+            document.querySelectorAll('.cta-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    alert('Thank you for your interest in the Future Without Limits campaign!');
+                });
+            });
+            
+            // Student tabs functionality
+            const tabs = document.querySelectorAll('.student-tab');
+            const cards = document.querySelectorAll('.student-card');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide cards based on category
+                    cards.forEach(card => {
+                        if (card.getAttribute('data-category') === category) {
+                            card.classList.add('active');
+                        } else {
+                            card.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
